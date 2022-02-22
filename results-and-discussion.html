@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Results and discussion | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line</title>
+  <meta name="description" content="3 Results and discussion | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Results and discussion | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="CrisSotomayor/chip-seq-project-LCG-2022" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Results and discussion | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line" />
+  
+  
+  
+
+<meta name="author" content="Cristina Sotomayor" />
+
+
+<meta name="date" content="2022-02-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="methods.html"/>
+<link rel="next" href="conclusions-and-perspectives.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>2</b> Methods</a></li>
+<li class="chapter" data-level="3" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>3</b> Results and discussion</a></li>
+<li class="chapter" data-level="4" data-path="conclusions-and-perspectives.html"><a href="conclusions-and-perspectives.html"><i class="fa fa-check"></i><b>4</b> Conclusions and perspectives</a></li>
+<li class="chapter" data-level="5" data-path="supplementary-material.html"><a href="supplementary-material.html"><i class="fa fa-check"></i><b>5</b> Supplementary material</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="supplementary-material.html"><a href="supplementary-material.html#bioinformatics-resources-used-for-this-work"><i class="fa fa-check"></i><b>5.1</b> Bioinformatics resources used for this work</a></li>
+<li class="chapter" data-level="5.2" data-path="supplementary-material.html"><a href="supplementary-material.html#data-sources"><i class="fa fa-check"></i><b>5.2</b> Data sources</a></li>
+<li class="chapter" data-level="5.3" data-path="supplementary-material.html"><a href="supplementary-material.html#complete-list-of-commands-and-parameters"><i class="fa fa-check"></i><b>5.3</b> Complete list of commands and parameters</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="results-and-discussion" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Results and discussion</h1>
+<p>The two motifs obtained from JASPAR are shown in the following images, the second one corresponding to the reverse complement. We can see that the two motifs are very similar, with the most conserved part of the sequence being TGTGGT and TGCGGT, respectively. The main difference is that the first one is longer, and they differ in the third position of the segment described, with T in the first one, and C or T in the second one. We will consider either the forward or the reverse complement of the different sequences, depending on which matches these motifs, for easier comparison.</p>
+<div class="figure"><span id="fig:unnamed-chunk-1-1"></span>
+<img src="figures/MA0511.1.png" alt="Reference motifs for RUNX2." width="280px" />
+<p class="caption">
+Figure 3.1: Reference motifs for RUNX2.
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-1-2"></span>
+<img src="figures/MA0511.2.png" alt="Reference motifs for RUNX2." width="280px" />
+<p class="caption">
+Figure 3.2: Reference motifs for RUNX2.
+</p>
+</div>
+<p>The next step was searching for motifs in the sequences of the peaks for our transcription factor of interest. For this, we used different programs from <a href="http://rsat.france-bioinformatique.fr/rsat/">RSAT, Regulatory Sequence Analysis Tools</a> to recover the peak sequences and search for motifs in them. The details can be found in the Supplementary Material, and the results from <code>peak-motifs</code> can be found <a href="http://rsat.france-bioinformatique.fr/rsat/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p/peak-motifs_synthesis.html">here</a>.</p>
+<p>The first results we obtained detail the nucleotide and dinucleotide composition profiles of the input sequences, followed by the found motifs. We will first look at the motifs found with Markov models, the <code>oligo analysis</code> resulting in motifs of 6 and 7 nucleotides in length. The results are summarized in the following table:</p>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="8%" />
+<col width="16%" />
+<col width="11%" />
+<col width="36%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Length</th>
+<th>Sequence</th>
+<th>Reverse Complement</th>
+<th>Significance</th>
+<th> JASPAR non-redundant vertebrate top matches</th>
+<th> Personal collection matches</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6 nt</td>
+<td>ACCACA</td>
+<td>TGTGGT</td>
+<td>96.26</td>
+<td>RUNX3, RUNX1, RUNX2</td>
+<td>MA0511.1, MA0511.2</td>
+</tr>
+<tr class="even">
+<td>6 nt</td>
+<td> ACCGCA</td>
+<td>TGCGGT</td>
+<td>95.49</td>
+<td>RUNX3, RUNX1, RUNX2</td>
+<td>MA0511.2, MA0511.1</td>
+</tr>
+<tr class="odd">
+<td>6 nt</td>
+<td>ACCTCA</td>
+<td>TGAGGT</td>
+<td>44.21</td>
+<td>RUNX3, RUNX2, RUNX1</td>
+<td>MA0511.2, MA0511.1</td>
+</tr>
+<tr class="even">
+<td>6 nt</td>
+<td> CACCAG</td>
+<td>CTGGTG</td>
+<td> 20.54</td>
+<td>ZEB1, TCF4, TCF12</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>6 nt</td>
+<td>AGTGGA</td>
+<td>TCCACT</td>
+<td> 18.29</td>
+<td>NKX2-2, NKX2-3, ZNF354c</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>7 nt</td>
+<td>TGACTCA</td>
+<td>TGAGTCA</td>
+<td>21.22</td>
+<td>BATF, BATF::JUN, BATF3</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>7 nt</td>
+<td>CCCCACC</td>
+<td>GGTGGGG</td>
+<td>16.21</td>
+<td>KLF4, ZNF148, ZNF740</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>7 nt</td>
+<td>CACCACC</td>
+<td>GGTGGTG</td>
+<td>16.08</td>
+<td>ZBTB7C, ZBTB7B, RREB1</td>
+<td> None</td>
+</tr>
+<tr class="odd">
+<td>7 nt</td>
+<td>CACCGCC</td>
+<td>GGCGGTG</td>
+<td>8.24</td>
+<td>KLF15, YY2</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>7 nt</td>
+<td>CACCTCC</td>
+<td>GGAGGTG</td>
+<td>7.48</td>
+<td>MAZ, TCF3, TCF12</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>The first three of the 6 nucleotide long motifs match the known motifs for RUNX2, as given by the MA0511.1 and MA0511.2 motifs found on JASPAR. Accordingly, they are the most significant matches. We saw that the second RUNX2 motif was the most conserved, and it coincides with the first match, while the second and third matches have variations we saw in those reference motifs. When compared to the JASPAR non-redundant vertebrate database, these sequences match both RUNX2 and related TFs RUNX1 and RUNX3. The RUNX2 match corresponds to the MA0511.2 motif, as we are using the non-redundant database, the other motif is not found. The first two motifs are shown in the following images:</p>
+<div class="figure"><span id="fig:unnamed-chunk-2-1"></span>
+<img src="figures/6nt1rc.png" alt="Top two 6nt motif matches. " width="280px" />
+<p class="caption">
+Figure 3.3: Top two 6nt motif matches.
+</p>
+</div>
+<div class="figure"><span id="fig:unnamed-chunk-2-2"></span>
+<img src="figures/6nt2rc.png" alt="Top two 6nt motif matches. " width="280px" />
+<p class="caption">
+Figure 3.4: Top two 6nt motif matches.
+</p>
+</div>
+<p>The next two 6 nt long motifs and the five 7 nt long motifs have lower significances and do not match the RUNX2 motifs. These genes bind to different sequences than the RUNX2 TF, but their over-representation in the peaks might mean that they frequently bind close to RUNX2 and may work in regulating the same genes. Comparing their significance with the negative controls will illustrate how important they are.</p>
+<p>The results then include sequences identified from positions. These sequences closely match the ones found previously, but 8 of the 10 (all 6 nt long and three 7 nt long) displayed have a significance of 300. According to RSAT, the position-analysis program used for these sequences calculates the positional distribution of oligonucleotides in a set of sequences, detecting those that discard from a homogeneous distribution. This program is recommended for use in full genomes, and the large significances might be due to the position of these sequences relative to the peak. All the sequences contain one of the two most significant 6 nt long motifs.</p>
+<p>The last 5 motifs correspond to sequences found with dyad analysis. Of these, 4 contain the TGTGGT main motif identified earlier, while the last contains TGCGGT, also identified earlier, and the space between the two words making up the dyad is 0. This suggests that there are no significant motifs separated by a specific number of nucleotides.</p>
+<p>The next step was the negative control, which used random sequences from the human genome the same length as our peak data. The details on how we got these sequences are in the supplementary information. The results for the oligo analysis (Markov model) are summarized in the following table:</p>
+<table>
+<colgroup>
+<col width="3%" />
+<col width="8%" />
+<col width="16%" />
+<col width="11%" />
+<col width="36%" />
+<col width="23%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Length</th>
+<th>Sequence</th>
+<th>Reverse Complement</th>
+<th>Significance</th>
+<th> JASPAR non-redundant vertebrate top matches</th>
+<th> Personal collection matches</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6 nt</td>
+<td>CAAAAC</td>
+<td>GTTTTG</td>
+<td>4.69</td>
+<td>Prdm15</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>6 nt</td>
+<td>GAAAAC</td>
+<td>GTTTTC</td>
+<td>4.10</td>
+<td>FOXP2, FOXK2, FOXA3</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>6 nt</td>
+<td>AAATTA</td>
+<td>TAATTT</td>
+<td>3.95</td>
+<td>Dlx1, RAX, MIXL1</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>6 nt</td>
+<td>CTTGTC</td>
+<td>GACAAG</td>
+<td>3.18</td>
+<td>GATA2, NFIC, GATA4</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>6 nt</td>
+<td>CTGGGC</td>
+<td>GACAAG</td>
+<td>3.16</td>
+<td>HIC2, NFIC, ZNF449</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>7 nt</td>
+<td>ATTTTTA</td>
+<td>TAAAAAT</td>
+<td>9.35</td>
+<td>MEF2D, MEF2B, FOXA1</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>7 nt</td>
+<td>GTTTTTA</td>
+<td>TAAAAAC</td>
+<td>3.14</td>
+<td>TBP, FOXL1, HOXD9</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>7 nt</td>
+<td>CTTTTTC</td>
+<td>GAAAAAG</td>
+<td>1.43</td>
+<td>PRDM1, PRDM4, Stat2</td>
+<td>None</td>
+</tr>
+<tr class="odd">
+<td>7 nt</td>
+<td>GAAAAAC</td>
+<td>GTTTTTC</td>
+<td>1.17</td>
+<td>NFATC2, NFAT5, NFATC3</td>
+<td>None</td>
+</tr>
+<tr class="even">
+<td>7 nt</td>
+<td>ACACATA</td>
+<td>TATGTGT</td>
+<td>0.92</td>
+<td>Bhlha15</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the significance values obtained are much lower than in the peak data analysis, where we obtained significances of 96.26 and 21.22 as our highest values for 6 and 7 nt, respectively, compared here to 4.69 and 9.35. This suggests that the results from the peak data are considerably more significant than random, and adds validity to our analysis. We also see that no sequences match the RUNX2 motifs, which is expected as we are working with random sequences. Every sequence matches at least one transcription factor from the JASPAR reference database, which could be due to the fact that there are thousands of transcription factors with different binding sites, and given a small random sequence, it is bound to match a TFBS motif.</p>
+<p>This negative control did not return any results for the position analysis, whereas our previous analysis returned some with very high significance values. However, we have seen that this analysis may not be appropriate for this kind of data. The dyad analysis for peak data returned sequences matching our RUNX2 motifs with significances of 350 and no gaps, and for our random data, there are once again no gaps, and the highest significance is 163.36. While the significance is high, it is much lower than our real results, and the sequences found for random data are mainly AT (first two) or mutliple Cs or Gs (last three). These sequences also match different TFs in the reference database, but none of the RUNX2 motifs.</p>
+<p>With this negative control, we can see that the last two of the 6 nt sequences and the first three of the 7 nt sequences from the oligo analysis of the peak data are more significant than we would expect from random data, and the TFs that match may be working with some of the same genes as RUNX2, and we can look at what each of them does. Given the scope of this work, we will only focus on the first match of each sequence, which are summarized in the following table.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Sequence</th>
+<th>Significance</th>
+<th>Name</th>
+<th> % aligned</th>
+<th>Pearson correlation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>CACCAG</td>
+<td>20.54</td>
+<td>ZEB1</td>
+<td>0.846</td>
+<td>0.758</td>
+</tr>
+<tr class="even">
+<td>AGTGGA</td>
+<td>18.29</td>
+<td>NKX2-2</td>
+<td>0.786</td>
+<td>0.736</td>
+</tr>
+<tr class="odd">
+<td>TGAGTCA</td>
+<td>21.22</td>
+<td>BATF</td>
+<td>1</td>
+<td>0.987</td>
+</tr>
+<tr class="even">
+<td>CCCCCACCC</td>
+<td>16.21</td>
+<td>KLF4</td>
+<td>0.9231</td>
+<td>0.969</td>
+</tr>
+<tr class="odd">
+<td>CACCACCA</td>
+<td>16.8</td>
+<td>ZBTB7C</td>
+<td>1</td>
+<td>0.78</td>
+</tr>
+</tbody>
+</table>
+<p>We looked up each gene in the UniProt database. ZEB1 corresponds to Zinc finger E-box-binding homeobox 1, a transcriptional repressor that inhibits interleukin-2 (IL-2) gene expression. BATF corresponds to the Basic leucine zipper transcriptional factor ATF-like, an AP-1 family transcription factor that controls the differentiation of lineage specific cells in the immune system. NKX2-2 corresponds to Homeobox protein Nkx-2.2, a transcriptional activator involved in the development of insulin-producting beta cells in the endocrine pancreas. KLF4 corresponds to Krueppel-like factor 4, a transcription factor that can act as both an activator and a repressor, regulating the expression of key transcription factors during embryonic development. According to UniProt, it may function in skeletal and kidney development. ZBT7C corresponds to Zinc finger and BTB domain-containing protein 7C, and the only information in UniProt says that it may be a tumor suppressor gene. None of the genes have reported interactions with RUNX2 or specific roles in osteosarcoma, but those related to immune factors and skeletal development may play a role in this type of bone cancer. More information is needed to elucidate the role of these genes, but the importance of their binding motifs suggests a relationship with RUNX2 regulation.</p>
+<p>The next step was to use <code>MEME-ChIP</code> to analyze the peak data, looking at 6 and 7 nt long motifs. The resulting matches are given as clusters, with the first one being represented by the sequence TGTGGT, which is our RUNX2 binding motif, and has an E-value of 1.3e-601. The next cluster is represented by TGAGTCA, with an E-value of 4.2e-10. Ths motif corresponds to the most significant 7 nt motif obtained with <code>peak motifs</code>. The next three motifs have E-values between 1.1e-2 and 4e-2, making them much less significant. Repeating the analysis with the random sequence data, we obtain the sequences GGGAGGC, CCAGCCT, and TCCCAGC, with E-values of 3.9e-39, 5.9e-30, and 5e-15, respectively, and some less significant sequences with E-values less than 8.5e-5. The sequences don’t seem to match those from the random sequences obtained with <code>peak motifs</code>, which were mostly AT enriched.</p>
+<p>The last step will be to use <code>matrix clustering</code> to compare the results obtained in the two analyses, with <code>peak motifs</code> and with <code>MEME-ChIP</code>. The results can be found <a href="http://rsat.france-bioinformatique.fr/rsat/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_SUMMARY.html">here</a>. Sorting the results by number of motifs in each cluster, we obtain that the two with most motifs (7 each) correspond to the original RUNX2 motif, as both contain the TGTGGT sequence. The second cluster groups the last four of the 7 nt <code>peak motifs</code> sequences and one obtained through <code>MEME-ChIP</code>, with consensus CACCACC and with the Cs being much more conserved. The third cluster corresponds to the TGAGTCA motif, the most significant of the 7 nt <code>peak motifs</code> sequences that was also found in <code>MEME-ChIP</code>, and contains four sequences. The rest of the clusters only have 1 or 2 motifs, so these may be the most significant.</p>
+<hr />
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="methods.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusions-and-perspectives.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Supplementary material | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line</title>
+  <meta name="description" content="5 Supplementary material | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Supplementary material | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="CrisSotomayor/chip-seq-project-LCG-2022" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Supplementary material | Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line" />
+  
+  
+  
+
+<meta name="author" content="Cristina Sotomayor" />
+
+
+<meta name="date" content="2022-02-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conclusions-and-perspectives.html"/>
+
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>2</b> Methods</a></li>
+<li class="chapter" data-level="3" data-path="results-and-discussion.html"><a href="results-and-discussion.html"><i class="fa fa-check"></i><b>3</b> Results and discussion</a></li>
+<li class="chapter" data-level="4" data-path="conclusions-and-perspectives.html"><a href="conclusions-and-perspectives.html"><i class="fa fa-check"></i><b>4</b> Conclusions and perspectives</a></li>
+<li class="chapter" data-level="5" data-path="supplementary-material.html"><a href="supplementary-material.html"><i class="fa fa-check"></i><b>5</b> Supplementary material</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="supplementary-material.html"><a href="supplementary-material.html#bioinformatics-resources-used-for-this-work"><i class="fa fa-check"></i><b>5.1</b> Bioinformatics resources used for this work</a></li>
+<li class="chapter" data-level="5.2" data-path="supplementary-material.html"><a href="supplementary-material.html#data-sources"><i class="fa fa-check"></i><b>5.2</b> Data sources</a></li>
+<li class="chapter" data-level="5.3" data-path="supplementary-material.html"><a href="supplementary-material.html#complete-list-of-commands-and-parameters"><i class="fa fa-check"></i><b>5.3</b> Complete list of commands and parameters</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="supplementary-material" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Supplementary material</h1>
+<div id="bioinformatics-resources-used-for-this-work" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Bioinformatics resources used for this work</h2>
+<p>The Table below indicates the bioinformatics resources (tools, databases) used for this analysis.</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="48%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Acronym</th>
+<th>Description</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>RSAT</td>
+<td>Regulatory Sequence Analysis Tools</td>
+<td><a href="http://rsat.eu/" class="uri">http://rsat.eu/</a></td>
+</tr>
+<tr class="even">
+<td>ReMap2022</td>
+<td>Database of transcriptional regulators peaks derived from curated ChIP-seq, ChIP-exo, DAP-seq experiments</td>
+<td><a href="https://remap.univ-amu.fr/" class="uri">https://remap.univ-amu.fr/</a></td>
+</tr>
+<tr class="odd">
+<td>JASPAR</td>
+<td>The JASPAR CORE database contains a curated, non-redundant set of profiles, derived from published collections of experimentally defined transcription factor binding sites for eukaryotes.</td>
+<td><a href="https://jaspar.genereg.net/" class="uri">https://jaspar.genereg.net/</a></td>
+</tr>
+<tr class="even">
+<td>UniProt</td>
+<td>Resource of protein sequence and functional information.</td>
+<td><a href="https://www.uniprot.org/" class="uri">https://www.uniprot.org/</a></td>
+</tr>
+<tr class="odd">
+<td>MEME-ChIP</td>
+<td>Motif analysis of large nucleotide datasets.</td>
+<td><a href="https://meme-suite.org/meme/tools/meme-chip" class="uri">https://meme-suite.org/meme/tools/meme-chip</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-sources" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Data sources</h2>
+<table>
+<colgroup>
+<col width="23%" />
+<col width="50%" />
+<col width="11%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Data downloaded</th>
+<th>ID</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ReMap2022</td>
+<td>RUNX2 peak dataset for tissue SaOS-2</td>
+<td>GSE76937</td>
+<td><a href="https://remap.univ-amu.fr/target_page/RUNX2:9606" class="uri">https://remap.univ-amu.fr/target_page/RUNX2:9606</a></td>
+</tr>
+<tr class="even">
+<td>JASPAR</td>
+<td>RUNX2 matrix profile 1</td>
+<td> MA0511.1</td>
+<td><a href="https://jaspar.genereg.net/matrix/MA0511.1/" class="uri">https://jaspar.genereg.net/matrix/MA0511.1/</a></td>
+</tr>
+<tr class="odd">
+<td>JASPAR</td>
+<td>RUNX2 matrix profile 2</td>
+<td> MA0511.2</td>
+<td><a href="https://jaspar.genereg.net/matrix/MA0511.2/" class="uri">https://jaspar.genereg.net/matrix/MA0511.2/</a></td>
+</tr>
+<tr class="even">
+<td>UniProt</td>
+<td>ZEB1_HUMAN entry</td>
+<td>P37275</td>
+<td><a href="https://www.uniprot.org/uniprot/P37275" class="uri">https://www.uniprot.org/uniprot/P37275</a></td>
+</tr>
+<tr class="odd">
+<td>UniProt</td>
+<td>BATF_HUMAN entry</td>
+<td>Q16520</td>
+<td><a href="https://www.uniprot.org/uniprot/Q16520" class="uri">https://www.uniprot.org/uniprot/Q16520</a></td>
+</tr>
+<tr class="even">
+<td>UniProt</td>
+<td>KLF4_HUMAN entry</td>
+<td>O43474</td>
+<td><a href="https://www.uniprot.org/uniprot/O43474" class="uri">https://www.uniprot.org/uniprot/O43474</a></td>
+</tr>
+<tr class="odd">
+<td>UniProt</td>
+<td>ZBTB7C_HUMAN entry</td>
+<td>A1YPR0</td>
+<td><a href="https://www.uniprot.org/uniprot/A1YPR0" class="uri">https://www.uniprot.org/uniprot/A1YPR0</a></td>
+</tr>
+<tr class="even">
+<td>UniProt</td>
+<td>NKX22_HUMAN entry</td>
+<td> O95096</td>
+<td><a href="https://www.uniprot.org/uniprot/O95096" class="uri">https://www.uniprot.org/uniprot/O95096</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="complete-list-of-commands-and-parameters" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Complete list of commands and parameters</h2>
+<p>Downloaded RUNX2 peak data is stored in file <code>GSE76937.RUNX2.SaOS-2.bed.gz</code>, then decompressed into <code>GSE76937.RUNX2.SaOS-2.bed</code>. The following analyses were done on <code>bash</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="supplementary-material.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verifying that number of peaks match reported information</span></span>
+<span id="cb1-2"><a href="supplementary-material.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> GSE76937.RUNX2.SaOS-2.bed</span></code></pre></div>
+<p>Then, we verify that all the lines correspond to our TF, tissue and study of interest, using the 4th column of the data, which corresponds to the name.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="supplementary-material.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f4</span> GSE76937.RUNX2.SaOS-2.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span></span></code></pre></div>
+<p>Then, we compute the number of peaks, the sum of their lengths, the mean peak length, and the median peak length.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="supplementary-material.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{len=$3 - $2; sum += len; n++; mean = sum / n ; print &quot;n=&quot;n&quot;\tsum=&quot;sum&quot;\tmean=&quot;mean}&#39;</span> GSE76937.RUNX2.SaOS-2.bed <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-n</span> 1</span>
+<span id="cb3-2"><a href="supplementary-material.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># n=6452    sum=1382173 mean=214.224</span></span>
+<span id="cb3-3"><a href="supplementary-material.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="supplementary-material.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Median is obtained from the two positions in the middle </span></span>
+<span id="cb3-5"><a href="supplementary-material.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;{print $3 - $2}&#39;</span> GSE76937.RUNX2.SaOS-2.bed <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">head</span> <span class="at">-3227</span> <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-2</span></span></code></pre></div>
+<p>The data from ReMap2022 was downloaded manually, obtaining both matrices in a single TRANSFAC format file, <code>RUNX2_reference_motifs.tf</code>. The next step was the recovery of sequence data from the peak data <code>bed</code> file using RSAT <code>fetch-sequences</code>, which was done with the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="supplementary-material.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fetch-sequences</span>  <span class="at">-v</span> 1 <span class="at">-genome</span> hg38 <span class="at">-header_format</span> galaxy <span class="at">-i</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/15/GSE76937.RUNX2.SaOS-2_902g_20220215_224256.bed <span class="at">-o</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/15/GSE76937.RUNX2.SaOS-2_902g_20220215_224256.fasta</span></code></pre></div>
+<p>The resulting data was saved as <code>RUNX2_peak_sequences.fasta</code>. The results were forwarded to <code>peak-motifs</code>, where we searched for over represented words, words with a positional bias, and over represented word pairs. For this analysis, we added <code>RUNX2_reference_motifs.tf</code> as a motif database, and also selected the JASPAR core nonredundant vertebrates (2020) as a reference database. The following command was used for this search:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="supplementary-material.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">$RSAT</span><span class="ex">/perl-scripts/peak-motifs</span>  <span class="at">-v</span> 1 <span class="at">-title</span> <span class="st">&#39;GSE76937.RUNX2.SaOS-2_902g_20220215_224256&#39;</span>  <span class="at">-i</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p/peak-motifspeak_seq <span class="at">-markov</span> auto <span class="at">-disco</span> oligos,dyads,positions <span class="at">-nmotifs</span> 5  <span class="at">-minol</span> 6 <span class="at">-maxol</span> 7  <span class="at">-no_merge_lengths</span> <span class="at">-2str</span>  <span class="at">-origin</span> center  <span class="at">-motif_db</span> jaspar_core_nonredundant_vertebrates tf <span class="va">$RSAT</span>/public_html/motif_databases/JASPAR/Jaspar_2020/nonredundant/JASPAR2020_CORE_vertebrates_non-redundant_pfms.tf <span class="at">-motif_db</span> personnal_collection tf <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p/peak-motifs_custom_motif_db.tf <span class="at">-scan_markov</span> 1 <span class="at">-task</span> purge,seqlen,composition,disco,merge_motifs,split_motifs,motifs_vs_motifs,timelog,archive,synthesis,small_summary,motifs_vs_db,motifs_vs_db,scan <span class="at">-prefix</span> peak-motifs <span class="at">-noov</span> <span class="at">-img_format</span> png  <span class="at">-outdir</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p</span></code></pre></div>
+<p>For the negative control, we used RSAT <code>random genome fragments</code> to obtain random sequences with the same sizes as our peaks. We used the bed coordinates downloaded from ReMap, and obtained another bed coordinate file, <code>random-genome-fragments.bed</code>. The server command used is:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="supplementary-material.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">$RSAT</span><span class="ex">/perl-scripts/random-genome-fragments</span>  <span class="at">-template_format</span> bed <span class="at">-i</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/random-genome-fragments_2022-02-19.190357_dpHPPV_template.bed <span class="at">-org</span> Homo_sapiens_GRCh38  <span class="at">-return</span> coord <span class="at">-coord_format</span> bed <span class="at">-v</span> 1  <span class="at">-o</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/random-genome-fragments_2022-02-19.190357_dpHPPV_fragments.bed <span class="dv">2</span><span class="op">&gt;</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/random-genome-fragments_2022-02-19.190357_dpHPPV_error_log.txt</span></code></pre></div>
+<p>Then, we used this bed file to get the corresponding sequences in the genome, by forwarding the file to <code>fetch-sequences</code>. The following command was used:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="supplementary-material.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fetch-sequences</span>  <span class="at">-v</span> 1 <span class="at">-genome</span> hg38 <span class="at">-header_format</span> galaxy <span class="at">-i</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/random-genome-fragments_3vl1_20220219_190635.bed <span class="at">-o</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/random-genome-fragments_3vl1_20220219_190635.fasta</span></code></pre></div>
+<p>We saved the sequences as <code>random-genome-fragments.fasta</code>, and forwarded the results to <code>peak-motifs</code> to perform the same analysis as with the peak data. We used the same parameters as previously, with <code>RUNX2_reference_motifs.tf</code> as a motif database, and the JASPAR core nonredundant vertebrates (2020) as a reference database. The command used was:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="supplementary-material.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">$RSAT</span><span class="ex">/perl-scripts/peak-motifs</span>  <span class="at">-v</span> 1 <span class="at">-title</span> <span class="st">&#39;random-genome-fragments_3vl1_20220219_190635&#39;</span>  <span class="at">-i</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/peak-motifs.2022-02-19.191148_2022-02-19.191148_uzzzE6/peak-motifspeak_seq <span class="at">-markov</span> auto <span class="at">-disco</span> oligos,dyads,positions <span class="at">-nmotifs</span> 5  <span class="at">-minol</span> 6 <span class="at">-maxol</span> 7  <span class="at">-no_merge_lengths</span> <span class="at">-2str</span>  <span class="at">-origin</span> center  <span class="at">-motif_db</span> jaspar_core_nonredundant_vertebrates tf <span class="va">$RSAT</span>/public_html/motif_databases/JASPAR/Jaspar_2020/nonredundant/JASPAR2020_CORE_vertebrates_non-redundant_pfms.tf <span class="at">-motif_db</span> personnal_collection tf <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/peak-motifs.2022-02-19.191148_2022-02-19.191148_uzzzE6/peak-motifs_custom_motif_db.tf <span class="at">-scan_markov</span> 1 <span class="at">-task</span> purge,seqlen,composition,disco,merge_motifs,split_motifs,motifs_vs_motifs,timelog,archive,synthesis,small_summary,motifs_vs_db,motifs_vs_db,scan <span class="at">-prefix</span> peak-motifs <span class="at">-noov</span> <span class="at">-img_format</span> png  <span class="at">-outdir</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/peak-motifs.2022-02-19.191148_2022-02-19.191148_uzzzE6</span></code></pre></div>
+<p>Next we used <code>MEME-ChIP</code> to analyze the peak data. We use the <code>RUNX2_peak_sequences.fasta</code> file, and the JASPAR core non-redundant vertebrate set of motifs as a reference. We selected sequences of 6 to 7 nucleotides, to match what we used for the RSAT <code>peak motifs</code>, we searched for 5 motifs, and left all other parameters as the program defaults.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="supplementary-material.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">meme-chip</span> <span class="at">-oc</span> . <span class="at">-time</span> 240 <span class="at">-ccut</span> 100 <span class="at">-dna</span> <span class="at">-order</span> 2 <span class="at">-minw</span> 6 <span class="at">-maxw</span> 7 <span class="at">-db</span> db/JASPAR/JASPAR2022_CORE_vertebrates_non-redundant.meme <span class="at">-meme-mod</span> zoops <span class="at">-meme-nmotifs</span> 5 <span class="at">-meme-searchsize</span> 100000 <span class="at">-streme-pvt</span> 0.05 <span class="at">-streme-totallength</span> 4000000 <span class="at">-centrimo-score</span> 5.0 <span class="at">-centrimo-ethresh</span> 10.0 RUNX2_peak_sequences.fasta</span></code></pre></div>
+<p>We saved the results in meme format as <code>peak_results.meme</code>. We used <code>convert matrix</code> from RSAT to convert this files into transfac format, as <code>peak_sequences_meme.tf</code>.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="supplementary-material.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">$RSAT</span><span class="ex">/perl-scripts/convert-matrix</span>  <span class="at">-from</span> meme <span class="at">-to</span> transfac <span class="at">-i</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/convert-matrix_2022-02-19.210229_81RWRd_input.meme <span class="at">-pseudo</span> 1 <span class="at">-multiply</span> 1 <span class="at">-decimals</span> 1 <span class="at">-perm</span> 0 <span class="at">-bg_pseudo</span> 0.01 <span class="at">-return</span> counts,consensus <span class="at">-to</span> transfac <span class="at">-o</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/convert-matrix_2022-02-19.210229_81RWRd_output.transfac</span></code></pre></div>
+<p>Now we repeat the MEME analysis with the random data from <code>random-genome-fragments.fasta</code>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="supplementary-material.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">meme-chip</span> <span class="at">-oc</span> . <span class="at">-time</span> 240 <span class="at">-ccut</span> 100 <span class="at">-dna</span> <span class="at">-order</span> 2 <span class="at">-minw</span> 6 <span class="at">-maxw</span> 7 <span class="at">-db</span> db/JASPAR/JASPAR2022_CORE_vertebrates_non-redundant.meme <span class="at">-meme-mod</span> zoops <span class="at">-meme-nmotifs</span> 5 <span class="at">-meme-searchsize</span> 100000 <span class="at">-streme-pvt</span> 0.05 <span class="at">-streme-totallength</span> 4000000 <span class="at">-centrimo-score</span> 5.0 <span class="at">-centrimo-ethresh</span> 10.0 random-genome-fragments.fasta</span></code></pre></div>
+<p>We save the results in meme format as <code>random_results.meme</code>.</p>
+<p>For our matrix clustering step, we need to compare the sequences obtained from <code>peak motifs</code> and from <code>MEME-ChIP</code> to obtain a non-redundant motif collection. We will select the 6 and 7 nt motifs from <code>peak motifs</code> obtained with the Markov model, not the positions or dyads, as those were not as significant and, mostly correspond to the RUNX2 motifs. We will download these in tf format from the results and manually merge into a single file, <code>peak_sequences_rsat.tf</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="supplementary-material.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> motifs_6nt.tf motifs_7nt.tf <span class="op">&gt;</span> peak_sequences_rsat.tf</span></code></pre></div>
+<p>We input both <code>peak_sequences_rsat.tf</code> and <code>peak_sequences_meme.tf</code> into <code>matrix clustering</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="supplementary-material.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="va">$RSAT</span><span class="ex">/perl-scripts/matrix-clustering</span>  <span class="at">-v</span> 1 <span class="at">-max_matrices</span> 300 <span class="at">-matrix</span> rsat <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_query_matrices.transfac transfac <span class="at">-matrix</span> meme <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_second_matrices. transfac <span class="at">-hclust_method</span> average <span class="at">-calc</span> sum <span class="at">-title</span> <span class="st">&#39;runx2_non-redundant_motifs&#39;</span> <span class="at">-metric_build_tree</span> <span class="st">&#39;Ncor&#39;</span> <span class="at">-lth</span> w 5 <span class="at">-lth</span> cor 0.6 <span class="at">-lth</span> Ncor 0.4 <span class="at">-quick</span> <span class="at">-label_in_tree</span> name <span class="at">-return</span> json,heatmap  <span class="at">-o</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering <span class="dv">2</span><span class="op">&gt;</span> <span class="va">$RSAT</span>/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_err.txt</span></code></pre></div>
+<hr />
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conclusions-and-perspectives.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

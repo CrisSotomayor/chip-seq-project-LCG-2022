@@ -1,0 +1,12 @@
+fig:unnamed-chunk-1-1
+fig:unnamed-chunk-1-2
+fig:unnamed-chunk-2-1
+fig:unnamed-chunk-2-2
+introduction
+methods
+results-and-discussion
+conclusions-and-perspectives
+supplementary-material
+bioinformatics-resources-used-for-this-work
+data-sources
+complete-list-of-commands-and-parameters
