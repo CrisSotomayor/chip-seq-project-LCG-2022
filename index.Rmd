@@ -1,0 +1,236 @@
+---
+title: "Analysis of ChIP-Seq data for RUNX2 in an osteosarcoma cell line"
+subtitle: "LCG BEII personal work -- 2022"
+author: "Cristina Sotomayor"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+github-repo: "CrisSotomayor/chip-seq-project-LCG-2022"
+documentclass: book
+output:
+  bookdown::gitbook:
+    css: "style.css"
+    
+---
+
+# Introduction
+
+[ChIP-Seq](https://www.illumina.com/techniques/sequencing/dna-sequencing/chip-seq.html) is a technique that combines chromatin immunoprecipitation (ChIP) with sequencing that allows us to identify transcription factor binding sites (TFBS) across the whole genome. Using different sequence analysis tools on this data, we can identify motifs that are over represented around peaks, representing those sites in the genome where a protein of interest binds. 
+
+For this project, we will be analyzing ChIP-Seq data from an osteosarcoma cell line. This type of cancer originates from bone cells, and typically occurs in teenagers and young adults. The transcription factor used to generate this data is [RUNX2](https://www.genecards.org/cgi-bin/carddisp.pl?gene=RUNX2), which encodes a nuclear protein with a Runt DNA-binding domain. It is essential for osteoblastic differentiation and skeletal morphogenesis and acts as a scaffold for nucleic acids and regulatory factors involved in skeletal gene expression.The original [paper](https://doi.org/10.1371/journal.pgen.1005884) where this data was published identified a RUNX2-mediated epigenetic mechanism of the survival of p53 defective cancer cells. 
+
+The motivation of this analysis is to find motifs in the peak data, both the original sequences to which RUNX2 can bind, as well as other motifs that can point to other transcription factors that act alongside RUNX2, regulating the same genes. We will thus analyze the over represented sequences around peaks and identify which correspond to the RUNX2 TF and which correspond to other genes. 
+
+# Methods
+
+For this project, we selected RUNX2 as our TF of interest, and downloaded ChIP-seq peak data from a human osteogenic sarcoma cell line ([SaOS-2](https://remap.univ-amu.fr/biotype_page/SaOS-2:9606)) from [ReMap2022](https://remap.univ-amu.fr/), a database of TF binding regions based on an extensive re-analysis of published ChIP-seq data for human transcription factors. The data contained a total of 6,452 peaks and corresponds to the [GSE76937](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE76937) dataset. We verified the downloaded file contained the same number of peaks, and calculated the total sum of peak lengths (1,382,173 bases), the mean peak length (214.22 bases) and the median peak length (195 bases). 
+
+We then used [JASPAR](https://jaspar.genereg.net/) to search for transcription factor binding motifs for RUNX2. We found two motifs, [MA0511.1](https://jaspar.genereg.net/matrix/MA0511.1/) and [MA0511.2](https://jaspar.genereg.net/matrix/MA0511.2/) and downloaded both matrices in a single TRANSFAC format file, as `RUNX2_reference_motifs.tf`. We used various RSAT pipelines to search for these reference motifs, and for other TFBS motifs in vertebrates, as well as MEME-ChIP. We performed negative controls with random genome sequences to verify the validity of our findings, and matrix clustering to compare the different motifs found. Finally, we interpreted the results obtained. 
+
+Full details on the methodology and the commands used for the analysis can be found in the supplementary material of this project. 
+
+# Results and discussion
+
+The two motifs obtained from JASPAR are shown in the following images, the second one corresponding to the reverse complement. We can see that the two motifs are very similar, with the most conserved part of the sequence being TGTGGT and TGCGGT, respectively. The main difference is that the first one is longer, and they differ in the third position of the segment described, with T in the first one, and C or T in the second one. We will consider either the forward or the reverse complement of the different sequences, depending on which matches these motifs, for easier comparison. 
+
+```{r, echo=FALSE, out.width="280px", fig.cap="Reference motifs for RUNX2."}
+knitr::include_graphics("figures/MA0511.1.png")
+knitr::include_graphics("figures/MA0511.2.png")
+```
+
+The next step was searching for motifs in the sequences of the peaks for our transcription factor of interest. For this, we used different programs from [RSAT, Regulatory Sequence Analysis Tools](http://rsat.france-bioinformatique.fr/rsat/) to recover the peak sequences and search for motifs in them. The details can be found in the Supplementary Material, and the results from `peak-motifs` can be found [here](http://rsat.france-bioinformatique.fr/rsat/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p/peak-motifs_synthesis.html). 
+
+The first results we obtained detail the nucleotide and dinucleotide composition profiles of the input sequences, followed by the found motifs. We will first look at the motifs found with Markov models, the `oligo analysis` resulting in motifs of 6 and 7 nucleotides in length. The results are summarized in the following table: 
+
+|Length| Sequence | Reverse Complement | Significance | JASPAR non-redundant vertebrate top matches | Personal collection matches |
+|------|----------|--------------------|--------------|---------------------------------------------|-----------------------------|
+| 6 nt | ACCACA | TGTGGT | 96.26 | RUNX3, RUNX1, RUNX2 | MA0511.1, MA0511.2 |
+| 6 nt | ACCGCA | TGCGGT | 95.49 | RUNX3, RUNX1, RUNX2 | MA0511.2, MA0511.1 | 
+| 6 nt | ACCTCA | TGAGGT | 44.21 | RUNX3, RUNX2, RUNX1 | MA0511.2, MA0511.1 |
+| 6 nt | CACCAG | CTGGTG | 20.54 | ZEB1, TCF4, TCF12 | None |
+| 6 nt | AGTGGA | TCCACT | 18.29 | NKX2-2, NKX2-3, ZNF354c | None |
+| 7 nt | TGACTCA | TGAGTCA | 21.22 | BATF, BATF::JUN, BATF3 | None |
+| 7 nt | CCCCACC | GGTGGGG | 16.21 | KLF4, ZNF148, ZNF740 | None |
+| 7 nt | CACCACC | GGTGGTG | 16.08 | ZBTB7C, ZBTB7B, RREB1 | None |
+| 7 nt | CACCGCC | GGCGGTG | 8.24 | KLF15, YY2 | None | 
+| 7 nt | CACCTCC | GGAGGTG | 7.48 | MAZ, TCF3, TCF12 | None | 
+
+The first three of the 6 nucleotide long motifs match the known motifs for RUNX2, as given by the MA0511.1 and MA0511.2 motifs found on JASPAR. Accordingly, they are the most significant matches. We saw that the second RUNX2 motif was the most conserved, and it coincides with the first match, while the second and third matches have variations we saw in those reference motifs. When compared to the JASPAR non-redundant vertebrate database, these sequences match both RUNX2 and related TFs RUNX1 and RUNX3. The RUNX2 match corresponds to the MA0511.2 motif, as we are using the non-redundant database, the other motif is not found. The first two motifs are shown in the following images: 
+
+```{r, echo=FALSE, out.width="280px", fig.cap="Top two 6nt motif matches. "}
+knitr::include_graphics("figures/6nt1rc.png")
+knitr::include_graphics("figures/6nt2rc.png")
+```
+
+The next two 6 nt long motifs and the five 7 nt long motifs have lower significances and do not match the RUNX2 motifs. These genes bind to different sequences than the RUNX2 TF, but their over-representation in the peaks might mean that they frequently bind close to RUNX2 and may work in regulating the same genes. Comparing their significance with the negative controls will illustrate how important they are. 
+
+The results then include sequences identified from positions. These sequences closely match the ones found previously, but 8 of the 10 (all 6 nt long and three 7 nt long) displayed have a significance of 300. According to RSAT, the position-analysis program used for these sequences calculates the positional distribution of oligonucleotides in a set of sequences, detecting those that discard from a homogeneous distribution. This program is recommended for use in full genomes, and the large significances might be due to the position of these sequences relative to the peak. All the sequences contain one of the two most significant 6 nt long motifs. 
+
+The last 5 motifs correspond to sequences found with dyad analysis. Of these, 4 contain the TGTGGT main motif identified earlier, while the last contains TGCGGT, also identified earlier, and the space between the two words making up the dyad is 0. This suggests that there are no significant motifs separated by a specific number of nucleotides. 
+
+The next step was the negative control, which used random sequences from the human genome the same length as our peak data. The details on how we got these sequences are in the supplementary information. The results for the oligo analysis (Markov model) are summarized in the following table:
+
+|Length| Sequence | Reverse Complement | Significance | JASPAR non-redundant vertebrate top matches | Personal collection matches |
+|----|----------|--------------------|--------------|---------------------------------------------|-----------------------------|
+| 6 nt | CAAAAC | GTTTTG |4.69|Prdm15|None|
+| 6 nt | GAAAAC | GTTTTC |4.10|FOXP2, FOXK2, FOXA3|None|
+| 6 nt | AAATTA | TAATTT |3.95|Dlx1, RAX, MIXL1|None|
+| 6 nt | CTTGTC | GACAAG |3.18|GATA2, NFIC, GATA4|None|
+| 6 nt | CTGGGC | GACAAG |3.16|HIC2, NFIC, ZNF449|None|
+| 7 nt | ATTTTTA | TAAAAAT |9.35|MEF2D, MEF2B, FOXA1|None|
+| 7 nt | GTTTTTA | TAAAAAC |3.14|TBP, FOXL1, HOXD9|None|
+| 7 nt | CTTTTTC | GAAAAAG |1.43|PRDM1, PRDM4, Stat2|None|
+| 7 nt | GAAAAAC | GTTTTTC |1.17|NFATC2, NFAT5, NFATC3|None|
+| 7 nt | ACACATA | TATGTGT |0.92|Bhlha15|None|
+
+We can see that the significance values obtained are much lower than in the peak data analysis, where we obtained significances of 96.26 and 21.22 as our highest values for 6 and 7 nt, respectively, compared here to 4.69 and 9.35. This suggests that the results from the peak data are considerably more significant than random, and adds validity to our analysis. We also see that no sequences match the RUNX2 motifs, which is expected as we are working with random sequences. Every sequence matches at least one transcription factor from the JASPAR reference database, which could be due to the fact that there are thousands of transcription factors with different binding sites, and given a small random sequence, it is bound to match a TFBS motif. 
+
+This negative control did not return any results for the position analysis, whereas our previous analysis returned some with very high significance values. However, we have seen that this analysis may not be appropriate for this kind of data. The dyad analysis for peak data returned sequences matching our RUNX2 motifs with significances of 350 and no gaps, and for our random data, there are once again no gaps, and the highest significance is 163.36. While the significance is high, it is much lower than our real results, and the sequences found for random data are mainly AT (first two) or mutliple Cs or Gs (last three). These sequences also match different TFs in the reference database, but none of the RUNX2 motifs. 
+
+With this negative control, we can see that the last two of the 6 nt sequences and the first three of the 7 nt sequences from the oligo analysis of the peak data are more significant than we would expect from random data, and the TFs that match may be working with some of the same genes as RUNX2, and we can look at what each of them does. Given the scope of this work, we will only focus on the first match of each sequence, which are summarized in the following table. 
+
+| Sequence | Significance | Name | % aligned | Pearson correlation |
+|----------|--------------|------|-----------|---------------------|
+| CACCAG | 20.54 | ZEB1 | 0.846 | 0.758 |
+| AGTGGA | 18.29 | NKX2-2 | 0.786 | 0.736 |
+| TGAGTCA | 21.22 | BATF | 1 | 0.987 |
+| CCCCCACCC | 16.21 | KLF4 | 0.9231 | 0.969 |
+| CACCACCA | 16.8 | ZBTB7C | 1 | 0.78 |
+
+We looked up each gene in the UniProt database. ZEB1 corresponds to Zinc finger E-box-binding homeobox 1, a transcriptional repressor that inhibits interleukin-2 (IL-2) gene expression. BATF corresponds to the Basic leucine zipper transcriptional factor ATF-like, an AP-1 family transcription factor that controls the differentiation of lineage specific cells in the immune system. NKX2-2 corresponds to Homeobox protein Nkx-2.2, a transcriptional activator involved in the development of insulin-producting beta cells in the endocrine pancreas. KLF4 corresponds to Krueppel-like factor 4, a transcription factor that can act as both an activator and a repressor, regulating the expression of key transcription factors during embryonic development. According to UniProt, it may function in skeletal and kidney development. ZBT7C corresponds to Zinc finger and BTB domain-containing protein 7C, and the only information in UniProt says that it may be a tumor suppressor gene. None of the genes have reported interactions with RUNX2 or specific roles in osteosarcoma, but those related to immune factors and skeletal development may play a role in this type of bone cancer. More information is needed to elucidate the role of these genes, but the importance of their binding motifs suggests a relationship with RUNX2 regulation. 
+
+The next step was to use `MEME-ChIP` to analyze the peak data, looking at 6 and 7 nt long motifs. The resulting matches are given as clusters, with the first one being represented by the sequence TGTGGT, which is our RUNX2 binding motif, and has an E-value of 1.3e-601. The next cluster is represented by TGAGTCA, with an E-value of 4.2e-10. Ths motif corresponds to the most significant 7 nt motif obtained with `peak motifs`. The next three motifs have E-values between 1.1e-2 and 4e-2, making them much less significant. Repeating the analysis with the random sequence data, we obtain the sequences GGGAGGC, CCAGCCT, and TCCCAGC, with E-values of 3.9e-39, 5.9e-30, and 5e-15, respectively, and some less significant sequences with E-values less than 8.5e-5. The sequences don't seem to match those from the random sequences obtained with `peak motifs`, which were mostly AT enriched. 
+
+The last step will be to use `matrix clustering` to compare the results obtained in the two analyses, with `peak motifs` and with `MEME-ChIP`. The results can be found [here](http://rsat.france-bioinformatique.fr/rsat/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_SUMMARY.html). Sorting the results by number of motifs in each cluster, we obtain that the two with most motifs (7 each) correspond to the original RUNX2 motif, as both contain the TGTGGT sequence. The second cluster groups the last four of the 7 nt `peak motifs` sequences and one obtained through `MEME-ChIP`, with consensus CACCACC and with the Cs being much more conserved. The third cluster corresponds to the TGAGTCA motif, the most significant of the 7 nt `peak motifs` sequences that was also found in `MEME-ChIP`, and contains four sequences. The rest of the clusters only have 1 or 2 motifs, so these may be the most significant.   
+
+* * * * * * 
+
+# Conclusions and perspectives
+
+The final cluster analysis, combining both the `peak motifs` and the `MEME-ChIP` results, contains three main significant motifs. The first, as expected, is the RUNX2 binding motif, TGTGGT, making up the two clusters with most elements. The second is CACCAC, as the matrix clustering considers that several different motifs from both programs are actually a single cluster. The third is TGAGTCA, a motif that both programs also found. The fact that all these groups contain sequences from both programs suggests that the motifs are more significant than if only one program had found them.
+
+Two important aspects of this work are the consideration of different programs and of negative controls, both of which help validate the results obtained. Using different programs and obtaining the same results reduces the chances that the specific algorithm of a program influences the results, while negative controls give a point of comparison for the significance values, the context allowing for a better interpretation. 
+
+In our results section we looked at the functions of a few genes found by `peak motifs` that were more significant than the results from the negative controls, and a possible next step would be looking more closely at their functions and see if any of them regulate the same genes as RUNX2.  However, as the matrix clustering step suggests that several of those motifs are actually a single cluster, we might instead look at the consensus sequence, and at any transcription factors that bind it as possible factors interacting with RUNX2 or regulating the same genes. Another option is looking at the extended tables for each of the motifs, as we only looked at the first match, and looking for genes in common among the motifs forming the cluster. Another important candidate is BATF, as both programs found its specific sequence. 
+
+Overall, the most significant results were consistently those motifs used to generate the peaks, the following motifs were considerably more significant than the controls, and both programs returned similar results, which suggests our analysis is reliable. 
+
+* * * * * * 
+
+# Supplementary material
+
+## Bioinformatics resources used for this work
+
+The Table below indicates the bioinformatics resources (tools, databases) used for this analysis.
+
+| Acronym | Description | URL | 
+|---------|-------------|-----|
+| RSAT | Regulatory Sequence Analysis Tools | <http://rsat.eu/> |
+| ReMap2022 | Database of transcriptional regulators peaks derived from curated ChIP-seq, ChIP-exo, DAP-seq experiments | <https://remap.univ-amu.fr/> |
+| JASPAR | The JASPAR CORE database contains a curated, non-redundant set of profiles, derived from published collections of experimentally defined transcription factor binding sites for eukaryotes.  | <https://jaspar.genereg.net/> |
+| UniProt | Resource of protein sequence and functional information. | <https://www.uniprot.org/> |
+|MEME-ChIP | Motif analysis of large nucleotide datasets. | <https://meme-suite.org/meme/tools/meme-chip> |
+
+## Data sources
+
+| Source | Data downloaded | ID | URL |
+|--------|-----------------|----|-----|
+|ReMap2022| RUNX2 peak dataset for tissue SaOS-2 | GSE76937 | <https://remap.univ-amu.fr/target_page/RUNX2:9606> |
+|JASPAR| RUNX2 matrix profile 1 | MA0511.1 | <https://jaspar.genereg.net/matrix/MA0511.1/> |
+|JASPAR| RUNX2 matrix profile 2 | MA0511.2 | <https://jaspar.genereg.net/matrix/MA0511.2/> |
+|UniProt| ZEB1_HUMAN entry | P37275 | <https://www.uniprot.org/uniprot/P37275> |
+|UniProt| BATF_HUMAN entry | Q16520 | <https://www.uniprot.org/uniprot/Q16520>|
+|UniProt | KLF4_HUMAN entry | O43474 | <https://www.uniprot.org/uniprot/O43474> |
+|UniProt| ZBTB7C_HUMAN entry | A1YPR0 | <https://www.uniprot.org/uniprot/A1YPR0>|
+|UniProt| NKX22_HUMAN entry | O95096 | <https://www.uniprot.org/uniprot/O95096> |
+
+
+## Complete list of commands and parameters
+
+Downloaded RUNX2 peak data is stored in file `GSE76937.RUNX2.SaOS-2.bed.gz`, then decompressed into `GSE76937.RUNX2.SaOS-2.bed`. The following analyses were done on `bash`. 
+
+```{bash, eval = FALSE}
+# Verifying that number of peaks match reported information
+wc -l GSE76937.RUNX2.SaOS-2.bed
+```
+
+Then, we verify that all the lines correspond to our TF, tissue and study of interest, using the 4th column of the data, which corresponds to the name. 
+
+```{bash, eval = FALSE}
+cut -f4 GSE76937.RUNX2.SaOS-2.bed | sort | uniq
+```
+
+Then, we compute the number of peaks, the sum of their lengths, the mean peak length, and the median peak length. 
+
+```{bash, eval = FALSE}
+awk '{len=$3 - $2; sum += len; n++; mean = sum / n ; print "n="n"\tsum="sum"\tmean="mean}' GSE76937.RUNX2.SaOS-2.bed | tail -n 1
+# n=6452	sum=1382173	mean=214.224
+
+# Median is obtained from the two positions in the middle 
+awk '{print $3 - $2}' GSE76937.RUNX2.SaOS-2.bed | sort | head -3227 | tail -2
+```
+
+The data from ReMap2022 was downloaded manually, obtaining both matrices in a single TRANSFAC format file, `RUNX2_reference_motifs.tf`. The next step was the recovery of sequence data from the peak data `bed` file using RSAT `fetch-sequences`, which was done with the following command:
+
+```{bash, eval = FALSE}
+fetch-sequences  -v 1 -genome hg38 -header_format galaxy -i $RSAT/public_html/tmp/www-data/2022/02/15/GSE76937.RUNX2.SaOS-2_902g_20220215_224256.bed -o $RSAT/public_html/tmp/www-data/2022/02/15/GSE76937.RUNX2.SaOS-2_902g_20220215_224256.fasta
+```
+
+The resulting data was saved as `RUNX2_peak_sequences.fasta`. The results were forwarded to `peak-motifs`, where we searched for over represented words, words with a positional bias, and over represented word pairs. For this analysis, we added `RUNX2_reference_motifs.tf` as a motif database, and also selected the JASPAR core nonredundant vertebrates (2020) as a reference database. The following command was used for this search:
+
+```{bash, eval=FALSE}
+$RSAT/perl-scripts/peak-motifs  -v 1 -title 'GSE76937.RUNX2.SaOS-2_902g_20220215_224256'  -i $RSAT/public_html/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p/peak-motifspeak_seq -markov auto -disco oligos,dyads,positions -nmotifs 5  -minol 6 -maxol 7  -no_merge_lengths -2str  -origin center  -motif_db jaspar_core_nonredundant_vertebrates tf $RSAT/public_html/motif_databases/JASPAR/Jaspar_2020/nonredundant/JASPAR2020_CORE_vertebrates_non-redundant_pfms.tf -motif_db personnal_collection tf $RSAT/public_html/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p/peak-motifs_custom_motif_db.tf -scan_markov 1 -task purge,seqlen,composition,disco,merge_motifs,split_motifs,motifs_vs_motifs,timelog,archive,synthesis,small_summary,motifs_vs_db,motifs_vs_db,scan -prefix peak-motifs -noov -img_format png  -outdir $RSAT/public_html/tmp/www-data/2022/02/15/peak-motifs.2022-02-15.225155_2022-02-15.225155_1QjH7p
+
+```
+
+For the negative control, we used RSAT `random genome fragments` to obtain random sequences with the same sizes as our peaks. We used the bed coordinates downloaded from ReMap, and obtained another bed coordinate file, `random-genome-fragments.bed`. The server command used is:
+
+```{bash, eval=FALSE}
+$RSAT/perl-scripts/random-genome-fragments  -template_format bed -i $RSAT/public_html/tmp/www-data/2022/02/19/random-genome-fragments_2022-02-19.190357_dpHPPV_template.bed -org Homo_sapiens_GRCh38  -return coord -coord_format bed -v 1  -o $RSAT/public_html/tmp/www-data/2022/02/19/random-genome-fragments_2022-02-19.190357_dpHPPV_fragments.bed 2> $RSAT/public_html/tmp/www-data/2022/02/19/random-genome-fragments_2022-02-19.190357_dpHPPV_error_log.txt
+```
+
+Then, we used this bed file to get the corresponding sequences in the genome, by forwarding the file to `fetch-sequences`. The following command was used: 
+
+```{bash, eval=FALSE}
+fetch-sequences  -v 1 -genome hg38 -header_format galaxy -i $RSAT/public_html/tmp/www-data/2022/02/19/random-genome-fragments_3vl1_20220219_190635.bed -o $RSAT/public_html/tmp/www-data/2022/02/19/random-genome-fragments_3vl1_20220219_190635.fasta
+```
+
+We saved the sequences as `random-genome-fragments.fasta`, and forwarded the results to `peak-motifs` to perform the same analysis as with the peak data. We used the same parameters as previously, with `RUNX2_reference_motifs.tf` as a motif database, and the JASPAR core nonredundant vertebrates (2020) as a reference database. The command used was:
+
+```{bash, eval=FALSE}
+$RSAT/perl-scripts/peak-motifs  -v 1 -title 'random-genome-fragments_3vl1_20220219_190635'  -i $RSAT/public_html/tmp/www-data/2022/02/19/peak-motifs.2022-02-19.191148_2022-02-19.191148_uzzzE6/peak-motifspeak_seq -markov auto -disco oligos,dyads,positions -nmotifs 5  -minol 6 -maxol 7  -no_merge_lengths -2str  -origin center  -motif_db jaspar_core_nonredundant_vertebrates tf $RSAT/public_html/motif_databases/JASPAR/Jaspar_2020/nonredundant/JASPAR2020_CORE_vertebrates_non-redundant_pfms.tf -motif_db personnal_collection tf $RSAT/public_html/tmp/www-data/2022/02/19/peak-motifs.2022-02-19.191148_2022-02-19.191148_uzzzE6/peak-motifs_custom_motif_db.tf -scan_markov 1 -task purge,seqlen,composition,disco,merge_motifs,split_motifs,motifs_vs_motifs,timelog,archive,synthesis,small_summary,motifs_vs_db,motifs_vs_db,scan -prefix peak-motifs -noov -img_format png  -outdir $RSAT/public_html/tmp/www-data/2022/02/19/peak-motifs.2022-02-19.191148_2022-02-19.191148_uzzzE6
+```
+
+Next we used `MEME-ChIP` to analyze the peak data. We use the `RUNX2_peak_sequences.fasta` file, and the JASPAR core non-redundant vertebrate set of motifs as a reference. We selected sequences of 6 to 7 nucleotides, to match what we used for the RSAT `peak motifs`, we searched for 5 motifs, and left all other parameters as the program defaults. 
+
+```{bash, eval=FALSE}
+meme-chip -oc . -time 240 -ccut 100 -dna -order 2 -minw 6 -maxw 7 -db db/JASPAR/JASPAR2022_CORE_vertebrates_non-redundant.meme -meme-mod zoops -meme-nmotifs 5 -meme-searchsize 100000 -streme-pvt 0.05 -streme-totallength 4000000 -centrimo-score 5.0 -centrimo-ethresh 10.0 RUNX2_peak_sequences.fasta
+```
+
+We saved the results in meme format as `peak_results.meme`. We used `convert matrix` from RSAT to convert this files into transfac format, as `peak_sequences_meme.tf`. 
+
+```{bash, eval=FALSE}
+$RSAT/perl-scripts/convert-matrix  -from meme -to transfac -i $RSAT/public_html/tmp/www-data/2022/02/19/convert-matrix_2022-02-19.210229_81RWRd_input.meme -pseudo 1 -multiply 1 -decimals 1 -perm 0 -bg_pseudo 0.01 -return counts,consensus -to transfac -o $RSAT/public_html/tmp/www-data/2022/02/19/convert-matrix_2022-02-19.210229_81RWRd_output.transfac
+```
+
+Now we repeat the MEME analysis with the random data from `random-genome-fragments.fasta`. 
+
+```{bash, eval=FALSE}
+meme-chip -oc . -time 240 -ccut 100 -dna -order 2 -minw 6 -maxw 7 -db db/JASPAR/JASPAR2022_CORE_vertebrates_non-redundant.meme -meme-mod zoops -meme-nmotifs 5 -meme-searchsize 100000 -streme-pvt 0.05 -streme-totallength 4000000 -centrimo-score 5.0 -centrimo-ethresh 10.0 random-genome-fragments.fasta
+```
+
+We save the results in meme format as `random_results.meme`. 
+
+For our matrix clustering step, we need to compare the sequences obtained from `peak motifs` and from `MEME-ChIP` to obtain a non-redundant motif collection. We will select the 6 and 7 nt motifs from `peak motifs` obtained with the Markov model, not the positions or dyads, as those were not as significant and, mostly correspond to the RUNX2 motifs. We will download these in tf format from the results and manually merge into a single file, `peak_sequences_rsat.tf`. 
+
+```{bash, eval=FALSE}
+cat motifs_6nt.tf motifs_7nt.tf > peak_sequences_rsat.tf
+```
+
+We input both `peak_sequences_rsat.tf` and `peak_sequences_meme.tf` into `matrix clustering`. 
+
+```{bash, eval=FALSE}
+$RSAT/perl-scripts/matrix-clustering  -v 1 -max_matrices 300 -matrix rsat $RSAT/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_query_matrices.transfac transfac -matrix meme $RSAT/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_second_matrices. transfac -hclust_method average -calc sum -title 'runx2_non-redundant_motifs' -metric_build_tree 'Ncor' -lth w 5 -lth cor 0.6 -lth Ncor 0.4 -quick -label_in_tree name -return json,heatmap  -o $RSAT/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering 2> $RSAT/public_html/tmp/www-data/2022/02/19/matrix-clustering_2022-02-19.213238_4A1u5J/matrix-clustering_err.txt
+```
+
+
+* * * * * * *
